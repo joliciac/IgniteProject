@@ -1,7 +1,3 @@
-from flask import Flask, render_template, request, jsonify
-import random 
-
-app = Flask(__name__)
 
 class RecommendedResourcesDatabase:
     def __init__(self):
@@ -128,33 +124,64 @@ resource_db.add_resource("Book recommendation", [
 
 questions_db = ToDoList()
 
-@app.route('/')
-def index():
-    return jsonify({
-        "text": "hi mum"
-    })
+def main():
+    todo_list = ToDoList()
+    todo_list.resource_db.add_resource("Book recommendation", [
+        "Book by Gayle Laackmann: Cracking the Coding Interview",
+        "Book by Alex Xu: System Design Interview Part 1 and 2",
+        "Book by Eric Giguere, John Mongan, and Noah Kindler: Programming Interviews Exposed",
+        "Book by Steven S. Skiena: The Algorithm Design Manual",
+        "Book by Adnan Aziz: Elements of Programming Interviews",
+        "Book by Jon Bentley: Programming Pearls",
+        "Book by Noel Markham: Java Programming Interview Exposed",
+        "Book by Meenakshi & Kamal Rawat: Dynamix Programming for Coding Interviews",
+        "Book by Adnan Aziz: Algorithms for Interview",
+        "Book by Joe Celkos: SQL Puzzles & Answers",
+    ])
 
-@app.route('/topics')
-def topics():
-    return jsonify({
-        "topics": []
-    })
+    while True:
+        print("\nMenu:")
+        print("1. Information about Interviews")
+        print("2. Book Recommendations")
+        print("3. Interview Questions")
+        print("4. Hackathon Events")
+        # print("5. Job Recommendations")
+        print("6. Quit")
 
-@app.route('/book_recommendations')
-def book_recommendations():
-    study_topic = "Book recommendation"
-    return render_template('resources.html', study_topic=study_topic, resources=resource_db.resources[study_topic])
+        choice = input("Enter your choice: ")
 
-@app.route('/interview_questions')
-def interview_questions():
-    question_topic = request.args.get('topic')
-    question=questions_db.recommend_questions(question_topic)
-    return jsonify({ "question": question})
-    # return render_template('questions.html', )
-
-@app.route('/hackathons')
-def hackathons():
-    return render_template('hackathons.html')
+        if choice == "1":
+            print(f"The truth\n")
+            print("""Students preparing for coding interviews should be aware of several truths to help them navigate the process more effectively. Remember that coding interviews are just one part of the job application process. While they are important, they are not the only factor that determines your worth as a developer. Stay persistent, keep learning, and approach interviews as opportunities to showcase your skills and experience.
+                """)
+        elif choice == "2":
+            study_topic = "Book recommendation"  # Fixed topic for book recommendations
+            todo_list.recommend_resources(study_topic)
+        elif choice == "3":
+            print("Ambition")
+            print("Adaptability")
+            print("Analytical thinking")
+            print("Building relationships")
+            print("Building business systems")
+            print("Caution")
+            print("Communication")
+            print("Conflict resolution")
+            study_topic = input("Enter your question topic: ")
+            todo_list.recommend_questions(study_topic)
+        elif choice == "4":
+            print("Hackathon Events:\n", 
+                "13-15 October: Data Hackfest (Virtual)\n",
+                "16-23 October: Global Hack Week: Open Source Week (Virtual)\n"
+                "20 October: Brizy No-code Hackathon (Virtual)\n",
+                "21 October: EasyA x Stacks Bitcoin Hackathon (London)\n",
+                "21 October: All In for Students Hackathon (Virtual)\n"
+                "25 October: Cloudflare AI hack night (London)\n",
+                "27-29 October: Web3Apps (Virtual)")
+        elif choice == "6":
+            break
+        else:
+            print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    main()
+
