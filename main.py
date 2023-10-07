@@ -17,7 +17,18 @@ class ToDoList:
     def __init__(self):
         self.resource_db = RecommendedResourcesDatabase()
         self.resources = {}
-
+        self.books = {
+            'SQL':["Book by Joe Celkos: SQL Puzzles & Answers"],
+            'General':["Book by Gayle Laackmann: Cracking the Coding Interview",
+        "Book by Alex Xu: System Design Interview Part 1 and 2",
+        "Book by Eric Giguere, John Mongan, and Noah Kindler: Programming Interviews Exposed",
+        "Book by Steven S. Skiena: The Algorithm Design Manual",
+        "Book by Adnan Aziz: Elements of Programming Interviews",
+        "Book by Jon Bentley: Programming Pearls",
+        "Book by Noel Markham: Java Programming Interview Exposed",
+        "Book by Meenakshi & Kamal Rawat: Dynamix Programming for Coding Interviews",
+        "Book by Adnan Aziz: Algorithms for Interview",],
+        }
         self.topics = {
             "Adaptability": [
                 "Describe a major change that occurred in a job that you held. How did you adapt to this change?",
@@ -108,13 +119,14 @@ class ToDoList:
             }
     def add_resource(self, topic, resources):
         self.resources[topic] = resources
-    def recommend_resources(self, study_topic, ):
-        if study_topic in self.resource_db.resources:
-            print(f"\nRecommended Resources for {study_topic}:")
-            for i, resource in enumerate(self.resource_db.resources[study_topic], 1):
-                print(f"{i}. {resource}")
-        else:
-            print("No recommendations available for this topic.")
+    def recommend_resources(self, study_topic):
+        # if study_topic in self.resource_db.resources:
+        #     print(f"\nRecommended Resources for {study_topic}:")
+        #     for i, resource in enumerate(self.resource_db.resources[study_topic], 1):
+        #         print(f"{i}. {resource}")
+        # else:
+        #     print("No recommendations available for this topic.")
+        return self.books[study_topic]
     def recommend_questions(self, question_topic):
         return self.topics[question_topic][random.randint(0,len(self.topics[question_topic])-1)]
     
@@ -130,8 +142,7 @@ resource_db.add_resource("Book recommendation", [
 ])
 
 questions_db = ToDoList()
-book_db = ToDoList()
-
+books_db = ToDoList()
 @app.route('/')
 def index():
     return jsonify({
@@ -145,19 +156,12 @@ def topics():
     })
 
 @app.route('/book_recommendations')
-# def book_recommendations():
-#     book_topic = request.args.get('book_topic')
-#     books = book_db.recommend_resources(book_topic)
-#     return jsonify({ "Books": books })
+def book_recommendations():
+    book_topic = request.args.get('bookrecs')
+    bookout = books_db.recommend_resources(book_topic)
+    return jsonify({ "Books": bookout})
     # study_topic = "Book recommendation"
     # return render_template('resources.html', study_topic=study_topic, resources=resource_db.resources[study_topic])
-def book_recommendations(study_topic):
-    if study_topic in resource_db.resources:
-        recommendations = resource_db.resources[study_topic]
-        return jsonify({'study_topic':study_topic, 'resources':recommendations})
-    else:
-        return jsonify({'error':'topic not found'})
-
 
 @app.route('/interview_questions')
 def interview_questions():
@@ -169,6 +173,7 @@ def interview_questions():
 
 @app.route('/hackathons')
 def hackathons():
+    
     return render_template('hackathons.html')
 
 if __name__ == "__main__":
