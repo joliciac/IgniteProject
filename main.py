@@ -140,10 +140,18 @@ def topics():
         "topics": []
     })
 
-@app.route('/book_recommendations')
-def book_recommendations():
-    study_topic = "Book recommendation"
-    return render_template('resources.html', study_topic=study_topic, resources=resource_db.resources[study_topic])
+# @app.route('/book_recommendations')
+# def book_recommendations():
+#     study_topic = "Book recommendation"
+#     return render_template('resources.html', study_topic=study_topic, resources=resource_db.resources[study_topic])
+
+@app.route('/book_recommendations/<string:study_topic>')
+def book_recommendations(study_topic):
+    if study_topic in resource_db.resources:
+        recommendations = resource_db.resources[study_topic]
+        return jsonify({"study_topic": study_topic, "resources": recommendations})
+    else:
+        return jsonify({"error": "Topic not found"})
 
 @app.route('/interview_questions')
 def interview_questions():
