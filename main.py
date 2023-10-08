@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, jsonify
-import random 
+from flask_cors import CORS
 
+import random 
+import flask
 app = Flask(__name__)
+CORS(app)
 
 class RecommendedResourcesDatabase:
     def __init__(self):
@@ -145,9 +148,13 @@ questions_db = ToDoList()
 books_db = ToDoList()
 @app.route('/')
 def index():
-    return jsonify({
-        "text": "hi mum"
-    })
+    response = flask.jsonify({'some': 'data'})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+    # res = jsonify({
+    #         "text": "hi mum"
+    #     })
+
 
 @app.route('/topics')
 def topics():
@@ -174,13 +181,21 @@ def book_recommendations():
     return jsonify({ "Books": bookout})
     # study_topic = "Book recommendation"
     # return render_template('resources.html', study_topic=study_topic, resources=resource_db.resources[study_topic])
-
-@app.route('/interview_questions')
+# @app.route('/meep', methods=['GET'])
+# def yourMethod():
+#     response = flask.jsonify({'some': 'data'})
+#     response.headers.add('Access-Control-Allow-Origin', '*')
+#     return response
+@app.route('/interview_questions', methods=['GET'])
 def interview_questions():
     question_topic = request.args.get('topic')
     question=questions_db.recommend_questions(question_topic)
-    print(question)
-    return jsonify({ "question": question})
+    response2 = flask.jsonify({'some': question})
+    response2.headers.add('Access-Control-Allow-Origin', '*')
+    return response2
+    # question_topic = request.args.get('topic')
+    # question=questions_db.recommend_questions(question_topic)
+    # return jsonify({ "question": question})
     # return render_template('questions.html', )
 
 @app.route('/hackathons')
