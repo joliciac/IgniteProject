@@ -11,3 +11,5 @@ fetch("http://127.0.0.1:5000/interview_questions?topic=Communication", requestOp
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
+
+

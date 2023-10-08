@@ -35,6 +35,27 @@ ul.navbar a{
 
 }
 
+.hidden{
+    display: none;
+}
+
+button{
+    width: 100%;
+    padding: 25px;
+    border-radius: 30px;
+    font-weight: 30px;
+}
+button:hover {
+    background-color: #ffff; /* Darker grey on hover */
+    box-shadow: 3px 2px 5px 3px #ee9730;
+
+}
+p{
+    color: black;
+    background-color: white;
+    padding: 15px;
+}
+
 ul.navbar a:hover{
     box-shadow: 3px 2px 5px 3px #ee9730;
     border-radius: 25px;
@@ -46,9 +67,8 @@ ul.navbar a:hover{
     padding: 0;
 } */
 
-/* Apply some basic styling to the page */
 body, .main{
-    font-family: Arial, sans-serif;
+    font-family: 'Red Hat Display', sans-serif;
     background-color: rgb(50, 50, 50);
     color: #333;
 }
@@ -77,6 +97,7 @@ main {
     display: block;
     margin: 0 auto;
     border-radius: 40%;
+    padding-bottom: 20px;
 }
 
 .intro {
@@ -85,6 +106,7 @@ main {
     color: black;
     background-color: #ffff;
     text-align: center;
+    padding-bottom: 30px;
 }
 
 .topic {
@@ -116,8 +138,8 @@ h1 {
 }
 
 h2 {
-    font-size: 18px;
-    color: #007BFF;
+    font-size: 22px;
+    color: #ee9730;
 }
 
 ul {
