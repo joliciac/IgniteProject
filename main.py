@@ -116,26 +116,18 @@ class ToDoList:
                 "What are the most challenging documents you have done? What kinds of proposals have you written?",
                 "What kinds of writing have you done? How do you prepare written communications?"
             ],
-            "conflict resolution": [
+            "Conflict Resolution": [
                 "Describe a time when you took personal accountability for a conflict and initiated contact with the individual(s) involved to explain your actions."
             ]
             }
     def add_resource(self, topic, resources):
         self.resources[topic] = resources
     def recommend_resources(self, study_topic):
-        # if study_topic in self.resource_db.resources:
-        #     print(f"\nRecommended Resources for {study_topic}:")
-        #     for i, resource in enumerate(self.resource_db.resources[study_topic], 1):
-        #         print(f"{i}. {resource}")
-        # else:
-        #     print("No recommendations available for this topic.")
+
         return self.books[study_topic]
     def recommend_questions(self, question_topic):
         return self.topics[question_topic][random.randint(0,len(self.topics[question_topic])-1)]
     
-
-
-
 # Sample resources and questions data
 resource_db = RecommendedResourcesDatabase()
 resource_db.add_resource("Book recommendation", [
@@ -151,53 +143,22 @@ def index():
     response = flask.jsonify({'some': 'data'})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
-    # res = jsonify({
-    #         "text": "hi mum"
-    #     })
 
-
-@app.route('/topics')
-def topics():
-    return jsonify({
-        "topics": []
-    })
-
-# @app.route('/book_recommendations')
-# def book_recommendations():
-#     study_topic = "Book recommendation"
-#     return render_template('resources.html', study_topic=study_topic, resources=resource_db.resources[study_topic])
-
-# @app.route('/book_recommendations/<string:study_topic>')
-# def book_recommendations(study_topic):
-#     if study_topic in resource_db.resources:
-#         recommendations = resource_db.resources[study_topic]
-#         return jsonify({"study_topic": study_topic, "resources": recommendations})
-#     else:
-#         return jsonify({"error": "Topic not found"})
 @app.route('/book_recommendations')
 def book_recommendations():
     book_topic = request.args.get('bookrecs')
     bookout = books_db.recommend_resources(book_topic)
     return jsonify({ "Books": bookout})
-    # study_topic = "Book recommendation"
-    # return render_template('resources.html', study_topic=study_topic, resources=resource_db.resources[study_topic])
-# @app.route('/meep', methods=['GET'])
-# def yourMethod():
-#     response = flask.jsonify({'some': 'data'})
-#     response.headers.add('Access-Control-Allow-Origin', '*')
-#     return response
+   
+
 @app.route('/interview_questions', methods=['GET'])
 def interview_questions():
     question_topic = request.args.get('topic')
     question=questions_db.recommend_questions(question_topic)
-    response2 = flask.jsonify({'some': question})
+    response2 = flask.jsonify({"question": question})
     response2.headers.add('Access-Control-Allow-Origin', '*')
     return response2
-    # question_topic = request.args.get('topic')
-    # question=questions_db.recommend_questions(question_topic)
-    # return jsonify({ "question": question})
-    # return render_template('questions.html', )
-
+    
 @app.route('/hackathons')
 def hackathons():
     
