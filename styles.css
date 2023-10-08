@@ -1,0 +1,70 @@
+/* .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #808080; /* Grey button background color
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #555; /* Darker grey on hover 
+} */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(92, 92, 94); /* Grey background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    display: flex;
+    /* flex-direction: column; */
+}
+
+.vertical, .horizontal {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.button {
+    /* display: flex; */
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #000000;
+    background-color: #c7c7c7; /* Grey button background color */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 500px;
+}
+.date {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #000000;
+    background-color: #ec9327; /* Grey button background color */
+    border-radius: 5px;
+    width: 75%;
+}
+.button:hover {
+    background-color: #ffffff; /* Darker grey on hover */
+}
