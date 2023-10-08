@@ -10,7 +10,7 @@
 
 body{
     /* background: linear-gradient(15deg, #260c14, #4b1004); */
-    background-color: #e28743;
+    background-color: rgb(50, 50, 50);
     width: 100%; /* Set the width and height as needed */
     height: 100vh;
     font-family: 'Red Hat Display', sans-serif;
@@ -31,7 +31,7 @@ img.logo{
 
 h1.title{
     /* color: #FB8B24; */
-    color: #21130d;
+    color: #ffff;
     font-size: 55px;
 }
 .igniteTitle{
@@ -44,10 +44,11 @@ h1.title{
     text-align: center;
     padding: 40px;
     margin: 0;
-    background-color: #eab676;
-    border-radius: 47%;
+    background-color: #e28743;
+    /* border-radius: 47%; */
     font-family: 'Red Hat Display', sans-serif;
     padding-top: 40px;
+    font-weight: bold;
 }
 
 /* Grid Container for navigation */
@@ -58,7 +59,13 @@ h1.title{
     width: 80%; /* Adjust the width as needed */
     margin: 0 auto; /* Center the grid container horizontally */
     padding-top: 30px;
+    padding-bottom: 20px;
     /* background-color: red; */
+}
+.grid-container h1{
+    font-size: 35px;
+    background-color: #e28743;
+    border-radius: 200px;
 }
 
 .grid-item {
@@ -102,10 +109,6 @@ h1.title{
     opacity: 40%;
 }
 
-/* h2{
-    font-family: 'Climate Crisis', cursive;
-
-} */
 
 /* Grid Container Hover */
 #grid-item-1:hover{
@@ -200,6 +203,10 @@ h1.title{
     height: 35px;  
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
 /* Keyframes */
 @keyframes animate {
     0%{
