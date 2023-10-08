@@ -54,10 +54,10 @@ h1.title{
 /* Grid Container for navigation */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
-    grid-gap: 50px; /* Gap between grid items */
-    width: 80%; /* Adjust the width as needed */
-    margin: 0 auto; /* Center the grid container horizontally */
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 50px; 
+    width: 80%; 
+    margin: 0 auto; 
     padding-top: 30px;
     padding-bottom: 20px;
     /* background-color: red; */
@@ -66,6 +66,8 @@ h1.title{
     font-size: 35px;
     background-color: #e28743;
     border-radius: 200px;
+    position: relative;
+    z-index: 2;
 }
 
 .grid-item {
@@ -128,7 +130,7 @@ h1.title{
 }
 
 /* Animated sqaures */
-.squares{
+/* .squares{
     position: absolute;
     top: 0;
     left: 0;
@@ -201,7 +203,7 @@ h1.title{
     left: 95%;
     width: 35px;
     height: 35px;  
-}
+} */
 
 a{
     text-decoration: none;

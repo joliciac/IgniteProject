@@ -29,7 +29,7 @@ ul.navbar a{
     text-align: center;
     height: 50px;
     line-height: 50px;
-    color: rgb(92, 92, 94);
+    color: #ffff;
     text-decoration: none;
     font-size: 20px;
 
@@ -86,7 +86,7 @@ hr {
 } */
 
 main {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -122,6 +122,8 @@ h2 {
     color: #ee9730;
 }
 
+
+
 /* Style the Interview Questions section */
 .Questions {
     margin-top: 40px;
@@ -150,6 +152,26 @@ ul {
 li {
     margin: 5px 0;
 }
+
+#grid-item-2{
+    background-image: url('images/IGNITE\ presentation10.jpg');
+    background-size:contain;
+    /* background-size: cover; */
+    background-position: center;
+    opacity: 40%;
+}
+
+.grid-item {
+    background-color: #ee9730;
+    padding: 85px; 
+    text-align: center;
+    border-radius: 210px;
+    /* background-color: #c7c7c7; */
+    border: 1px solid black; /* Add a border for visual separation */
+    box-shadow: 3px 2px 5px 3px rgba(0,0,0,0.46);
+
+}
+
 
 /* Media query for responsive design */
 @media screen and (max-width: 600px) {
